@@ -4,22 +4,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multiplication Table</title>
+    <meta name="description" content="Generate colorful multiplication tables quickly and easily.">
+    <title>TableMaster | Multiplication Tables</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Multiplication Table</h1>
+    <header class="topbar">
+        <a href="#" class="brand">
+            <span class="brand-icon">✖</span>
+            TableMaster
+        </a>
 
-        <label for="number">Enter any number:</label>
-        <input type="number" id="number" placeholder="Enter a number">
+        <button id="themeToggle" class="theme-btn"
+                type="button" aria-label="Switch to dark mode">
+            🌙 Dark Mode
+        </button>
+    </header>
 
-        <button onclick="printTable()">Generate Table</button>
+    <main class="container">
 
-        <div id="result"></div>
-    </div>
+        <section class="hero">
+            <span class="eyebrow">✦ YOUR SMART MATH COMPANION</span>
+            <h1>Multiplication Tables <span>Made Easy.</span></h1>
+            <p>
+                Generate, explore, copy and print multiplication tables
+                with a colorful, interactive experience.
+            </p>
+        </section>
 
-    <script src="script.js"></script>
+        <section class="control-panel">
+            <div class="panel-heading">
+                <div>
+                    <h2>Customize your tables</h2>
+                    <p>Choose your table range and multiplication limit.</p>
+                </div>
+                <span class="settings-icon">⚙️</span>
+            </div>
+
+            <form id="tableForm">
+                <div class="input-grid">
+                    <div class="field">
+                        <label for="startNumber">Start table</label>
+                        <input type="number" id="startNumber"
+                               min="0" max="100" value="1" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="endNumber">End table</label>
+                        <input type="number" id="endNumber"
+                               min="0" max="100" value="5" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="limit">Multiply up to</label>
+                        <input type="number" id="limit"
+                               min="1" max="100" value="10" required>
+                    </div>
+                </div>
+
+                <p class="hint">
+                    Example: Start 1, End 5, Limit 10 generates tables
+                    from 1 to 5, each with 10 equations.
+                </p>
+
+                <div class="quick-picks">
+                    <span>Quick select:</span>
+                    <button type="button" class="quick-btn" data-end="5">1–5</button>
+                    <button type="button" class="quick-btn" data-end="10">1–10</button>
+                    <button type="button" class="quick-btn" data-end="20">1–20</button>
+                </div>
+
+                <button type="submit" class="generate-btn">
+                    <span>✦</span> Generate Tables
+                </button>
+            </form>
+        </section>
+
+        <section class="results-section" aria-live="polite">
+            <div class="results-header">
+                <div>
+                    <h2>Your Multiplication Tables</h2>
+                    <p id="status">Your tables are ready to explore.</p>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="copyBtn" class="secondary-btn" type="button">
+                        📋 Copy
+                    </button>
+                    <button id="printBtn" class="secondary-btn" type="button">
+                        🖨️ Print
+                    </button>
+                </div>
+            </div>
+
+            <div id="result" class="table-grid"></div>
+        </section>
+        
+    </main>
+
+    <div id="toast" class="toast" role="status"
+         aria-live="polite"></div>
+
 </body>
 </html>
+
